@@ -234,7 +234,7 @@ export default function Home() {
             disabled={isLoading}
             className="w-full py-2.5 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-xl text-sm transition-all disabled:bg-slate-300"
           >
-            {isLoading ? '등록 중...' : '등록하기 🫰🏾'}
+            {isLoading ? '등록 중...' : '등록하기 🫰'}
           </button>
         </form>
 
