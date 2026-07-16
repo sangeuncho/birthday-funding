@@ -170,7 +170,7 @@ export default function Home() {
             />
           </div>
           <h3 className="text-xl font-bold">23 24 Rossignol Hero</h3>
-          <p className="text-sm text-slate-500 mt-1">스키 탈 때마다 당신을 떠올릴게요. 고마워요 ... 사랑해요 </p>
+          <p className="text-sm text-slate-500 mt-1"><em>스키 탈 때마다 당신을 떠올릴게요. 고마워요 ... 사랑해요</em> </p>
           
           {/* 🛠️ 자동으로 너비가 조절되는 실시간 게이지 바 */}
           <div className="w-full mt-6 bg-slate-100 h-3 rounded-full overflow-hidden">
