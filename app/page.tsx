@@ -132,9 +132,8 @@ export default function Home() {
         </h1>
         <p className="text-slate-500 mt-2 text-sm leading-relaxed">
           올해 생일은 자잘한 선물 대신 <strong>오래 쓸 스키를 장만</strong>하려고 합니다.<br />
-          여러분이 채워주시는 만원, 이만원이 모여 스키의 바인딩이 되고, 플레이트가 됩니다.<br />
-          보내주시는 마음이 이 스키의 소중한 지분이 되어 앞으로의 겨울을 영원히 함께하는 것으로 생각하겠습니다..😳<br />
-         참여는 완전 자유! 축하해주시는 마음만으로도 너무 감사합니다 😍
+          여러분이 채워주시는 만원, 이만원이 모여 스키의 바인딩이 되고, 플레이트가 됩니다..<br />
+          보내주시는 마음이 이 스키의 지분이 되어 앞으로의 겨울을 영원히 함께 할 것 입니다 😳
         </p>
         
         {/* 디데이 타이머 */}
@@ -170,7 +169,7 @@ export default function Home() {
             />
           </div>
           <h3 className="text-xl font-bold">23 24 Rossignol Hero</h3>
-          <p className="text-sm text-slate-500 mt-1">소액 투자로 겨울 내내 생색낼 수 있는 레전드 가성비 회원권 🤝</p>
+          <p className="text-sm text-slate-500 mt-1">스키 탈 때마다 당신을 떠올릴게요. <br /> 고마워요 ... 사랑해요 </p>
           
           {/* 🛠️ 자동으로 너비가 조절되는 실시간 게이지 바 */}
           <div className="w-full mt-6 bg-slate-100 h-3 rounded-full overflow-hidden">
