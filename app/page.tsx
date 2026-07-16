@@ -126,14 +126,15 @@ export default function Home() {
       
       {/* 상단 헤더 / 디데이 */}
       <section className="w-full max-w-md text-center my-8">
-        <span className="text-4xl">🎉</span>
+        <span className="text-4xl">🎂</span>
         <h1 className="text-3xl font-extrabold tracking-tight mt-2 text-pink-600">
-          SangeunCho's Birthday Funding
+          Sangeun's Birthday Funding
         </h1>
         <p className="text-slate-500 mt-2 text-sm leading-relaxed">
-          올해 생일은 자잘한 선물 대신 <strong>오래 쓸 스키를 장만</strong>하려고 합니다.<br />
-          여러분이 채워주시는 만원, 이만원이 모여 스키의 바인딩이 되고, 플레이트가 됩니다..<br />
-          보내주시는 마음이 이 스키의 지분이 되어 앞으로의 겨울을 영원히 함께 할 것 입니다 😳
+          안녕하세요... 조상은입니다 <br /> 
+          올해 생일은 자잘한 선물 대신 <strong>오래 쓸 스키</strong>를 장만하고 싶읍니다.<br />
+          여러분이 채워주시는 만원, 이만원이 모여 스키의 바인딩이 되고, 플레이트가 됩니다...<br />
+          보내주시는 마음이 이 스키의 지분이 되어 앞으로의 겨울을 영원히 함께 할 것 입니다😳
         </p>
         
         {/* 디데이 타이머 */}
@@ -169,7 +170,7 @@ export default function Home() {
             />
           </div>
           <h3 className="text-xl font-bold">23 24 Rossignol Hero</h3>
-          <p className="text-sm text-slate-500 mt-1">스키 탈 때마다 당신을 떠올릴게요. <br /> 고마워요 ... 사랑해요 </p>
+          <p className="text-sm text-slate-500 mt-1">스키 탈 때마다 당신을 떠올릴게요. 고마워요 ... 사랑해요 </p>
           
           {/* 🛠️ 자동으로 너비가 조절되는 실시간 게이지 바 */}
           <div className="w-full mt-6 bg-slate-100 h-3 rounded-full overflow-hidden">
@@ -233,7 +234,7 @@ export default function Home() {
             disabled={isLoading}
             className="w-full py-2.5 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-xl text-sm transition-all disabled:bg-slate-300"
           >
-            {isLoading ? '등록 중...' : '축하글 등록하기 ✨'}
+            {isLoading ? '등록 중...' : '등록하기 🫰🏾'}
           </button>
         </form>
 
