@@ -91,7 +91,7 @@ export default function Home() {
               🏆 작년 우승의 순간
             </span>
           </div>
-      
+      </div>
        
         <p className="text-slate-500 mt-2 text-sm leading-relaxed">
           안녕하세요... 조상은입니다 <br /> 
