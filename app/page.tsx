@@ -84,7 +84,7 @@ export default function Home() {
     <div className="mt-6 mb-4 bg-white p-3 rounded-3xl shadow-sm border border-amber-100">
       <div className="w-full aspect-[3/4] bg-slate-100 rounded-2xl overflow-hidden relative border border-slate-100">
         <img 
-          src="/winner1.jpg" // 👈 파일명 확인 (winner1.jpg 또는 winner.jpg)
+          src="/winner.jpg" 
           alt="작년 우승 사진"
           className="w-full h-full object-cover"
         />
