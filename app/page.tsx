@@ -3,14 +3,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/app/supabase';
 
-// 방명록 타입 정의
-interface GuestbookMessage {
-  id: number;
-  nickname: string;
-  content: string;
-  created_at: string;
-}
-
 export default function Home() {
   // 1. 계좌번호 복사 기능 state
   const [copied, setCopied] = useState(false);
@@ -20,12 +12,8 @@ export default function Home() {
   // 2. 생일 디데이 계산 state
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-  // 3. 방명록 및 펀딩 데이터 관련 state
-  const [messages, setMessages] = useState<GuestbookMessage[]>([]);
+  // 3. 펀딩 데이터 관련 state
   const [currentAmount, setCurrentAmount] = useState<number>(0); // 💰 실시간 금액 저장할 곳
-  const [nickname, setNickname] = useState('');
-  const [content, setContent] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
   // 생일 디데이 타이머 효과
   useEffect(() => {
@@ -48,21 +36,8 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  // 4. 데이터베이스에서 데이터 통째로 가져오는 함수 (방명록 + 펀딩금액)
-  const fetchAllData = async () => {
-    // 방명록 목록 가져오기
-    const { data: msgData, error: msgError } = await supabase
-      .from('guestbook')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (msgError) {
-      console.error('방명록을 불러오는데 실패했어요:', msgError);
-    } else if (msgData) {
-      setMessages(msgData);
-    }
-
-    // 펀딩 금액 가져오기
+  // 4. 데이터베이스에서 펀딩 금액 가져오는 함수
+  const fetchFundingData = async () => {
     const { data: fundData, error: fundError } = await supabase
       .from('funding')
       .select('current_amount')
@@ -78,37 +53,11 @@ export default function Home() {
 
   // 컴포넌트가 처음 켜질 때 실행
   useEffect(() => {
-    fetchAllData();
+    fetchFundingData();
   }, []);
 
   // 달성 퍼센트 계산 (최대 100%까지만 채워지도록 설정)
   const percent = Math.min(Math.floor((currentAmount / targetAmount) * 100), 100);
-
-  // 5. 방명록 등록하기 함수 (Create)
-  const handleSubmitMessage = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!nickname.trim() || !content.trim()) {
-      alert('닉네임과 내용을 모두 입력해주세요!');
-      return;
-    }
-
-    setIsLoading(true);
-
-    const { error } = await supabase
-      .from('guestbook')
-      .insert([{ nickname, content }]);
-
-    setIsLoading(false);
-
-    if (error) {
-      alert('방명록 등록에 실패했습니다. 다시 시도해주세요.');
-      console.error(error);
-    } else {
-      setNickname('');
-      setContent('');
-      fetchAllData(); // 등록 성공 후 목록과 퍼센트 갱신
-    }
-  };
 
   // 계좌 복사 함수
   const handleCopy = async () => {
@@ -200,62 +149,11 @@ export default function Home() {
         </button>
 
         <a
-          href="https://open.kakao.com/o/sQrYSdEi" 
-          target="_blank"
-          rel="noopener noreferrer"
+          href="kakaolink://" 
           className="w-full py-4 bg-[#FEE500] hover:bg-[#FDD100] text-[#191919] font-bold rounded-2xl transition-all shadow-sm text-center block"
         >
-          💛 카카오톡으로 송금하기
+          💛 카카오톡 앱 열기
         </a>
-      </section>
-
-      {/* 방명록 입력 및 목록 영역 */}
-      <section className="w-full max-w-md bg-white rounded-3xl p-6 shadow-md border border-pink-50 mb-12">
-        <h2 className="text-lg font-bold text-slate-700 mb-4">✍️ 방명록 남기기</h2>
-        
-        {/* 방명록 작성 폼 */}
-        <form onSubmit={handleSubmitMessage} className="flex flex-col gap-3 mb-6">
-          <input 
-            type="text" 
-            placeholder="닉네임" 
-            value={nickname}
-            onChange={(e) => setNickname(e.target.value)}
-            className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-pink-400"
-          />
-          <textarea 
-            placeholder="축하 메시지를 적어주세요!" 
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            rows={3}
-            className="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-pink-400 resize-none"
-          />
-          <button 
-            type="submit"
-            disabled={isLoading}
-            className="w-full py-2.5 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-xl text-sm transition-all disabled:bg-slate-300"
-          >
-            {isLoading ? '등록 중...' : '등록하기 🫰'}
-          </button>
-        </form>
-
-        {/* 방명록 리스트 */}
-        <div className="border-t border-slate-100 pt-4 max-h-60 overflow-y-auto flex flex-col gap-3">
-          {messages.length === 0 ? (
-            <p className="text-center text-sm text-slate-400 py-4">첫 번째 축하 메시지를 남겨보세요! 🎉</p>
-          ) : (
-            messages.map((msg) => (
-              <div key={msg.id} className="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-sm font-bold text-slate-700">{msg.nickname}</span>
-                  <span className="text-xs text-slate-400">
-                    {msg.created_at ? new Date(msg.created_at).toLocaleDateString() : new Date().toLocaleDateString()}
-                  </span>
-                </div>
-                <p className="text-sm text-slate-600 whitespace-pre-wrap">{msg.content}</p>
-              </div>
-            ))
-          )}
-        </div>
       </section>
 
     </main>
