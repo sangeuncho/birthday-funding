@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   title: "상은이 2026 생일 펀딩 🎂",
   description: "상은이의 대학 생활 마지막 스키 합숙을 위한 생일 펀딩! 많은 후원 부탁드립니다 🙇‍♂️",
   openGraph: {
-    title: "상은이 2026 생일 펀딩 🎂",
-    description: "상은이의 생일을 맞아 스키 장비 펀딩을 오픈했습니다!",
+    title: "조상은 2026 생일 펀딩 🎂",
+    description: "상은이의 23살 생일을 맞아 생일 펀딩을 오픈했습니다!",
     images: [
       {
         url: "/winner.jpg", // 👈 winner.jpg로 설정 완료!
