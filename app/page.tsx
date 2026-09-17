@@ -79,19 +79,20 @@ export default function Home() {
         <h1 className="text-3xl font-extrabold tracking-tight mt-2 text-pink-600">
           Sangeun's Birthday Funding
         </h1>
-        {/* 🏆 [NEW] 작년 우승 사진 영역 */}
-        <div className="mt-6 mb-4 bg-white p-3 rounded-3xl shadow-sm border border-amber-100">
-          <div className="w-full h-52 bg-slate-100 rounded-2xl overflow-hidden relative mb-2">
-            <img 
-              src="/winner.jpg" // 👈 public/winner.jpg 경로나 사진 URL을 입력해주세요!
-              alt="작년 우승 사진"
-              className="w-full h-full object-cover"
-            />
-            <span className="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
-              🏆 작년 우승의 순간
-            </span>
-          </div>
+        
+        {/* 🏆 작년 우승 사진 영역 (사진 1장, 가로 3 : 세로 4 비율) */}
+    <div className="mt-6 mb-4 bg-white p-3 rounded-3xl shadow-sm border border-amber-100">
+      <div className="w-full aspect-[3/4] bg-slate-100 rounded-2xl overflow-hidden relative border border-slate-100">
+        <img 
+          src="/winner1.jpg" // 👈 파일명 확인 (winner1.jpg 또는 winner.jpg)
+          alt="작년 우승 사진"
+          className="w-full h-full object-cover"
+        />
+        <span className="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
+          🏆🥇🥈🥈🥈
+        </span>
       </div>
+    </div>
        
         <p className="text-slate-500 mt-2 text-sm leading-relaxed">
           안녕하세요... 조상은입니다 <br /> 
